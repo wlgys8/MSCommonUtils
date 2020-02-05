@@ -22,6 +22,9 @@ namespace MS.CommonUtils{
             }
         }
 
+        /// <summary>
+        /// List will be cleared and put back into the pool
+        /// </summary>
         public static void Release(List<T> list){
             list.Clear();
             _cache.Release(list);
