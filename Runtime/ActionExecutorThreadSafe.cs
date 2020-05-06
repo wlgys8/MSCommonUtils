@@ -4,13 +4,22 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace MS.CommonUtils{
+
+    /// <summary>
+    /// 用这个类，实现在Unity的主线程上运行指定的函数。
+    /// </summary>
     public class ActionExecutorThreadSafe
     {
-       private List<UnityAction> _actions = new List<UnityAction>();
+        private List<UnityAction> _actions = new List<UnityAction>();
 
         private ActionExecutorThreadSafe(){
 
         }
+
+        /// <summary>
+        /// 将指定的UnityAction在Unity主线程上执行.
+        /// action会被压入执行队列，并在下一个Update周期执行
+        /// </summary>
         public void Execute(UnityAction action){
             lock(_actions){
                     _actions.Add(action);

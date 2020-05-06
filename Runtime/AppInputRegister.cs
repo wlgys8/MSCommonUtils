@@ -10,6 +10,10 @@ namespace MS.CommonUtils{
         Pressing,
     }  
 
+
+    /// <summary>
+    /// 注册监听输入事件
+    /// </summary>
     public class AppInputRegister
     {
         private static List<KeyboardEvent> _keyboardEvents = new List<KeyboardEvent>();
@@ -17,6 +21,10 @@ namespace MS.CommonUtils{
         internal static void CopyKeyboardEventsTo(List<KeyboardEvent> list){
             list.AddRange(_keyboardEvents);
         }
+
+        /// <summary>
+        /// 注册监听键盘输入事件
+        /// </summary>
         public static void RegisterKeyEvent(KeyCode keyCode,KeyboardEventType eventType,UnityAction action){
             InitializeIfNot();
             var evt = new KeyboardEvent(){
@@ -27,6 +35,9 @@ namespace MS.CommonUtils{
             _keyboardEvents.Add(evt);
         }
 
+        /// <summary>
+        /// 取消注册键盘监听事件
+        /// </summary>
         public static bool UnregisterKeyEvent(KeyCode keyCode,KeyboardEventType eventType,UnityAction action){
             var idx = 0;
             foreach(var item in _keyboardEvents){
