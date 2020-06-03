@@ -18,7 +18,6 @@ namespace MS.CommonUtils{
                 if(AppStates.quiting){
                     return null;
                 }
-                var scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
                 if(!_poolNode){
                     _poolNode = new GameObject(_name).transform;
                     _poolNode.gameObject.SetActive(false);
