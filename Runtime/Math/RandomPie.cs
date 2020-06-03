@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 
 namespace MS.CommonUtils{
+
+    /// <summary>
+    /// 饼状随机生成器
+    /// </summary>
     public class RandomPie<T>
     {
         private Dictionary<T,float> _elements = new Dictionary<T, float>();
@@ -17,6 +21,9 @@ namespace MS.CommonUtils{
             _random = new System.Random(seed);
         }
 
+        /// <summary>
+        /// element为元素，weight为其在饼中占据的份额
+        /// </summary>
         public void Add(T element,float weight){
             if(weight <= 0){
                 throw new System.Exception("weight mush be > 0");
