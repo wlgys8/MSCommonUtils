@@ -1,0 +1,16 @@
+{
+    "name": "MS.CommonUtils.Editor",
+    "references": [
+        "MS.CommonUtils"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
