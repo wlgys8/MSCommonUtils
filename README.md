@@ -35,3 +35,9 @@
 * `EventDispatcher` 
 
     以Monobehaviour实现接口的形式，来针对gameObject进行事件分发管理.
+
+## Editor
+
+* `LayerFieldAttribute`
+
+    加在Int字段上，可以在Inspector上显示为Layer选择组件。
