@@ -27,6 +27,22 @@ namespace MS.CommonUtils{
             }
         }
 
+        public T Request(Transform parent,Vector3 position,Quaternion rotation){
+            if(this.Count > 0){
+                var ret = base.Request();
+                ret.transform.SetParent(parent,false);
+                ret.transform.localPosition = position;
+                ret.transform.localRotation = rotation;
+                return ret;
+            }else{
+                var go = Resources.Load<GameObject>(_path);
+                if(!go){
+                    return null;
+                }
+                return Object.Instantiate<GameObject>(go,position,rotation,parent).GetComponent<T>();
+            }           
+        }
+
         public override void Release(T item){
             base.Release(item);
         }
