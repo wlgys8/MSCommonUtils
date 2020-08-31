@@ -15,31 +15,39 @@ namespace MS.CommonUtils{
             _path = path;
         }
 
+        private T Load(){
+            var go = Resources.Load<GameObject>(_path);
+            if(!go){
+                return null;
+            }
+            var ret = Object.Instantiate<GameObject>(go).GetComponent<T>();
+            return ret;            
+        }
+
+        private T Load(Transform parent,Vector3 position,Quaternion rotation){
+            var go = Resources.Load<GameObject>(_path);
+            if(!go){
+                return null;
+            }
+            return Object.Instantiate<GameObject>(go,position,rotation,parent).GetComponent<T>();
+        }
+
         public override T Request(){
             if(this.Count > 0){
                 return base.Request();
             }else{
-                var go = Resources.Load<GameObject>(_path);
-                if(!go){
-                    return null;
-                }
-                return Object.Instantiate<GameObject>(go).GetComponent<T>();
+                return this.Load();
             }
         }
 
         public T Request(Transform parent,Vector3 position,Quaternion rotation){
             if(this.Count > 0){
-                var ret = base.Request();
-                ret.transform.SetParent(parent,false);
+                var ret = base.Request(parent);
                 ret.transform.localPosition = position;
                 ret.transform.localRotation = rotation;
                 return ret;
             }else{
-                var go = Resources.Load<GameObject>(_path);
-                if(!go){
-                    return null;
-                }
-                return Object.Instantiate<GameObject>(go,position,rotation,parent).GetComponent<T>();
+                return this.Load(parent,position,rotation);
             }           
         }
 
