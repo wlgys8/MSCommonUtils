@@ -1,6 +1,8 @@
 {
     "name": "MS.CommonUtils",
-    "references": [],
+    "references": [
+        "MS.CommonUtils.Pool"
+    ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
